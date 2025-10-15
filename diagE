@@ -1,0 +1,4 @@
+L ME(mu1,mu2,mu3) = PsiP * EPH(mu3) * Eprop(q-k1-k2) * EPH(mu2) * Eprop(q-k1)
+		* EZ(beta) * Eprop(q+l-k1) * EZ(alpha) *Zprop(alpha,beta)
+		* Eprop(q-k1) * EPH(mu1);
+	

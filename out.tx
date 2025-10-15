@@ -1,0 +1,126 @@
+TFORM 5.0.0-beta.1 (Sep  5 2025, v5.0.0-beta.1-229-g93f976e) 12 workers  Run: Tue Oct 14 20:54:28 2025
+    #include propAndTrace.frm
+    NT gg;
+    F PsiP, Eprop, EPH, Zprop, EZ;
+    S D, [D-4], m,M, ax, vec, [sqrt2];
+    V l, q, k1, k2, k3;
+    I m1, mu1,mu2,mu3,mu4,alpha,beta, zero=0, five=0;
+    I i1,...,i10;
+    V v1,...,v10;
+    CF FD,coeff1, coeff2, po, poinv,acc;
+    S [l^2];
+    S x1,x2,x3, x,y,z, a,b,c,d,xi,rtxi;
+    Dimension D:[D-4];
+    Unittrace D;
+    #define MAXGAM "30"
+    #define stepCount "2"
+    I <j1=0>,...,<j`MAXGAM'=0>,j301=0;
+    
+    #include diagE
+    L ME(mu1,mu2,mu3) = PsiP * EPH(mu3) * Eprop(q-k1-k2) * EPH(mu2) * Eprop(q-k1)
+    		* EZ(beta) * Eprop(q+l-k1) * EZ(alpha) *Zprop(alpha,beta)
+    		* Eprop(q-k1) * EPH(mu1);
+    	
+    
+    *taking out 1/[sqrt2]*e^5/(4swcw)^2
+    
+    id PsiP = 1/2/m * (m*gg(m1) + gg(m1, j301)*q(j301))*gg(m1, five);
+    
+    id EZ(alpha?) = i_ * vec * gg(m1, alpha) + i_ * ax * gg(m1, alpha)* gg(m1,five);
+    #do i = 1,`MAXGAM'
+      if (count(Eprop,1))
+        id once Eprop(l?) = i_ * (gg(m1,j`i')*l(j`i') + m*gg(m1))*FD(l,m);
+    #enddo
+    
+    id Zprop(alpha?,beta?) = -i_ *( d_(alpha,beta)*FD(l,M) 
+        - l(alpha)*l(beta)/M^2 * (FD(l,M) - FD(l,rtxi*M)) ) ;
+    
+    id EPH(mu1?) = i_ * gg(m1,mu1);
+    B gg;
+    .sort
+
+Time =       0.00 sec    Generated terms =       3456
+              ME         Terms in output =       3456
+                         Bytes used      =     418832
+    Collect coeff1;
+    .sort
+
+Time =       0.00 sec    Generated terms =        256
+              ME         Terms in output =        256
+                         Bytes used      =    1801248
+    #call trace5D
+
+Time =       0.00 sec    Generated terms =        256
+              ME         Terms in output =        256
+ reducing all but one g5 Bytes used      =    1801248
+
+Time =       0.00 sec    Generated terms =        256
+              ME         Terms in output =        256
+                         Bytes used      =    1809812
+
+Time =       0.01 sec    Generated terms =       1440
+              ME         Terms in output =       1440
+                         Bytes used      =   10794928
+
+Time =       0.02 sec    Generated terms =       1440
+              ME         Terms in output =       1440
+     removing odd gammas Bytes used      =   10798500
+
+Time =       0.02 sec    Generated terms =        720
+              ME         Terms in output =        720
+           start distrib Bytes used      =    5426168
+             Thread 3 reporting
+Time =       0.15 sec    Generated terms =       3403
+              ME         Terms in thread =       1887
+             tracen w g5 Bytes used      =   25315184
+             Thread 2 reporting
+Time =       0.18 sec    Generated terms =       7385
+              ME         Terms in thread =       3669
+             tracen w g5 Bytes used      =   45173636
+             Thread 7 reporting
+Time =       0.15 sec    Generated terms =       6282
+              ME         Terms in thread =       2823
+             tracen w g5 Bytes used      =   28820512
+             Thread 4 reporting
+Time =       0.17 sec    Generated terms =       6004
+              ME         Terms in thread =       3229
+             tracen w g5 Bytes used      =   34817652
+             Thread 5 reporting
+Time =       0.17 sec    Generated terms =       7259
+              ME         Terms in thread =       3494
+             tracen w g5 Bytes used      =   37394212
+             Thread 8 reporting
+Time =       0.17 sec    Generated terms =       5427
+              ME         Terms in thread =       2761
+             tracen w g5 Bytes used      =   34144164
+             Thread 6 reporting
+Time =       0.17 sec    Generated terms =      10093
+              ME         Terms in thread =       4563
+             tracen w g5 Bytes used      =   56549940
+             Thread 11 reporting
+Time =       0.17 sec    Generated terms =       4292
+              ME         Terms in thread =       2455
+             tracen w g5 Bytes used      =   31309960
+             Thread 1 reporting
+Time =       0.17 sec    Generated terms =       5282
+              ME         Terms in thread =       2644
+             tracen w g5 Bytes used      =   36849320
+             Thread 10 reporting
+Time =       0.18 sec    Generated terms =       6054
+              ME         Terms in thread =       3274
+             tracen w g5 Bytes used      =   40588936
+             Thread 12 reporting
+Time =       0.17 sec    Generated terms =       5469
+              ME         Terms in thread =       2882
+             tracen w g5 Bytes used      =   35286692
+             Thread 9 reporting
+Time =       0.18 sec    Generated terms =       6778
+              ME         Terms in thread =       3523
+             tracen w g5 Bytes used      =   41564652
+
+Time =       0.15 sec    Generated terms =      73728
+              ME         Terms in output =      19748
+             tracen w g5 Bytes used      =  230138424
+Program terminating in thread 0 at trace5D Line 65 --> 
+Terminate called from startup.c:1611 (onErrSig)
+  0.18 sec + 6.07 sec: 6.25 sec out of 1.18 sec
