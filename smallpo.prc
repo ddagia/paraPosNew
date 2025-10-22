@@ -6,10 +6,10 @@
   id po(a?pos_,0) = fac_(a-1);
   id poinv(a?pos_,0) = invfac_(a-1);
 
-  id po(x1?neg0_,x2?) = acc(PO(x1,x2)/x2/ep);
-  id poinv(x1?neg0_,x2?) = acc(POINV(x1,x2)*x2*ep);
+  id po(a?neg0_,b?) = acc(PO(a,b)/b/ep);
+  id poinv(a?neg0_,b?) = acc(POINV(a,b)*b*ep);
   
-  id many po(x1?,x2?) = acc(PO(x1,x2));
-  id many poinv(x1?,x2?) = acc(POINV(x1,x2));
+  id many po(a?,b?) = acc(PO(a,b));
+  id many poinv(a?,b?) = acc(POINV(a,b));
   
 #endprocedure

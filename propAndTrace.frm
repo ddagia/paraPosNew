@@ -1,13 +1,13 @@
 NT gg;
 F PsiP, Eprop, EPH, Zprop, EZ;
 S D, [D-4], m,M, ax, vec, [sqrt2];
-V l, q, k1, k2, k3;
+V l, q,q1, k1, k2, k3;
 I m1, mu1,mu2,mu3,mu4,alpha,beta, zero=0, five=0;
 I i1,...,i10;
 V v1,...,v10;
 CF FD,coeff1, coeff2, po, poinv,acc;
 S [l^2];
-S x1,x2,x3, x,y,z, a,b,c,d,xi,rtxi;
+S x1,x2,x3, x,y,z, a,b,c,d,xi,rtxi, [1-x1], [1-x2], [1-x3],n;
 Dimension D:[D-4];
 Unittrace D;
 #define MAXGAM "30"
@@ -43,12 +43,40 @@ id coeff1(a?) = a;
 .sort
 sum j1,...,j`MAXGAM',j301;
 .sort
+
+* subtracting counter term, it turns out that the only contribution is ax*vec. There is no scalar contrib; thus just the mass renormalization is enough
+* wave function renormalization isn't necessary.
+* Here Sigma_1loop^R (q1) = Sigma_1loop(q1) - Sigma_1loop(m)
+* with Sigma_1loop^R (m) = 0 = Sigma^1loop(m) - Sigma_1loop(m)
+
+L MEctr(mu1,mu2,mu3) = ME(mu1,mu2,mu3);
+.sort
+inexpression MEctr;
+  multiply replace_(q1,q);
+endinexpression;
+
+inexpression ME;
+  multiply replace_(q1,q-k1);
+*  argument FD;
+*    id q1 = q-k1;
+*  endargument;
+*  id q1 = q-k1;
+endinexpression;
+*print +s;
+.sort
+Drop;
+ndrop MErenorm;
+L MErenorm(mu1,mu2,mu3) = ME(mu1,mu2,mu3) - MEctr(mu1,mu2,mu3);
+
+
+.sort
 id FD(q-k1,m) = -1/2/q.k1;
 id FD(q-k1-k2,m) = -1/2/q.k3;
 #call scalarProdNoX
 
-#call toFormFactors(ME,magE)
-Drop ME;
+#call toFormFactors(MErenorm,magE)
+Drop;
+ndrop magE;
 #call scalarProdNoX
 .sort
 

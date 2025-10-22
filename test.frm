@@ -1,21 +1,27 @@
 Off statistics;
 S D,[xx],m;
-CF FD,fNoL;
 Dimension D;
-V l,k1,q,k2,v1,v2,k3,v0;
-I i1,i2,i3;
+CF FD,fNoL, po, poinv, acc, ep,sym;
+V l,k1,q,k2,v1,v2,v3,k3,v0;
+I i1,i2,i3, <j1=0>,...,<j10=0>;
+S [l^2],a,b;
 
-L F1 = l(i1)*l(i2);
+Vector p1,p2;
+#call pochtablenew
 
-multiply replace_(l,l+[xx]*k1);
+Local test = fNoL(k2,m)*l.q^2*l.l;
+.sort
+#call createFD0(l)
 print +s;
 .sort
-id [xx]^D? =  1/(D+1);
-
-#call createFD0(l)
-
-
-
-
-print +s;
+#call onePoint(l,[l^2])
+.sort
+id k1.k1 = 0;
+#call smallpo
+id acc(a?) = a;
+if (count(ep,1)>0) discard;
+sum j1,...,j10;
+B [l^2];
+Print;
+.sort
 .end
