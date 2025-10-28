@@ -2,9 +2,9 @@
 
 Prop and Trace:
   1. Defines Propagators and vetices.
-  2. Takes Trace5D using the Larin scheme.
+  2. Takes Trace5D using the ~~Larin~~ NDR-Discard scheme.
   3. removes levi-civita symbols (they vanish for this problem)
-  4. Subtracts counter term, here it subtracts q1->q
+  4. Subtracts counter term(s).
   5. Simplifies denominators independent of loop momentum l.
 
 expandAll:
