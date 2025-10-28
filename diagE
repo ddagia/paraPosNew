@@ -1,4 +1,6 @@
-L ME(mu1,mu2,mu3) = PsiP * EPH(mu3) * Eprop(q-k1-k2) * EPH(mu2) * Eprop(q-k1)
-		* EZ(beta) * Eprop(l+q1) * EZ(alpha) *Zprop(alpha,beta)
-		* Eprop(q-k1) * EPH(mu1);
+L ELoop = -i_*EZ(2,beta) * Eprop(2,l+q1) * EZ(2,alpha) *Zprop(l,alpha,beta);
+
+L ME = PsiP * EPH(1,mu3) * Eprop(1,q-k1-k2) * EPH(1,mu2) * Eprop(1,q-k1)
+    *EpropNew(1,q-k1)
+		* Eprop(1,q-k1) * EPH(1,mu1);
 	
