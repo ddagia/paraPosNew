@@ -19,15 +19,13 @@ if (match(fNoL(0,m?))==0) goto notallowed;
 id fNoL(0,m?) = Ainternal(m);
 
 #call average(`p',`psq')
-print +s;
-La notallowed;
+Label notallowed;
+ModuleOption local $vec;
 .sort
 
 id `psq'^a? *Ainternal(m?) = m^(2*a) * A0(m^2);
 
-Label notallowed;
 ModuleOption local $vec;
-print +s;
 .sort
 sum j1,...,j10;
 

@@ -1,4 +1,5 @@
 #procedure newExpand(input, result, expandParam)
+*expands 1/(l+p) type things
 #ifndef `stepCount'
   #define stepCount "3"
 #endif

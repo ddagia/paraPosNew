@@ -19,12 +19,12 @@ id k3.k3 = 0;
 id q.q = m^2;
 
 #if (`A' == "x1" || `A' == "x2" || `A' == "x3")
-  id x^a?pos0_ = (2*m^2)^a*(1-x2)^a;
-  id y^a?pos0_ = (2*m^2)^a*(1-x1)^a ;
-  id z^a?pos0_ = (2*m^2)^a*(1-x3)^a;
-  id x^a?neg_ = (2*m^2)^a*[1-x2]^a;
-  id y^a?neg_ = (2*m^2)^a*[1-x1]^a ;
-  id z^a?neg_ = (2*m^2)^a*[1-x3]^a;
+  id x^a?pos0_ = (2*m^2*(1-x2))^a;
+  id y^a?pos0_ = (2*m^2*(1-x1))^a ;
+  id z^a?pos0_ = (2*m^2*(1-x3))^a;
+  id x^a?neg_ = (2*m^2*[1-x2])^a;
+  id y^a?neg_ = (2*m^2*[1-x1])^a ;
+  id z^a?neg_ = (2*m^2*[1-x3])^a;
 #elseif (`A' == "x" || `A' == "y" || `A' == "z")
   id x1^a? = (1 - y/(2*m^2))^a;
   id x2^a? = (1 - x/(2*m^2))^a;

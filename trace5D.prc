@@ -14,7 +14,6 @@
 I m1;
 Autodeclare I i=0;
 NT gg,Ga,G1,G2;
-Autodeclare tensor ee;
 
 *removes all gamma5's except for one
 #do i = 0, `COUNTG5'-2
@@ -31,11 +30,14 @@ Autodeclare tensor ee;
 
 *once gg(m1,beta, five ) = invfac_(3)* gg(m1, i4,i5,i6)*e_(beta,i4,i5,i6);
 
-.sort
+.sort:chainin and moving fives to the end;
 repeat;
-  id gg(m1?, ?a)*gg(m1, ?b) = gg(m1,?a,?b);
+  id gg(m1?, ?a)*gg(m1?, ?b) = gg(m1,?a,?b);
 endrepeat;
 id gg(m1?, ?a, five, ?b) = Ga(m1, ?b, ?a, five);
+
+.sort:contract;
+*contracts all levi-civita's here as there's no "repeated" indices yet, all levi-civitas have different i'i'
 
 contract;
 .sort
