@@ -1,0 +1,9 @@
+L CLoop = EZ(2,beta)*Eprop(2,q2+l)*EPH(2,mu1)*Eprop(2,q3+l)*EZ(2,alpha)*Zprop(l,alpha,beta);
+
+L MC = PsiP *EPH(1,mu3)*Eprop(1,q-k1-k2)*Eprop(1,q-k1)*EPH(1,mu2)
+	*Eprop(1,q-k1)*EPHNew(1,mu1);
+
+* argument Eprop;
+*   id q2 = q-k1-k2;
+*   id q3 = q-k1;
+* endargument;

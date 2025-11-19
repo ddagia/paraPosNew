@@ -15,7 +15,10 @@ id Zprop(l?,alpha?,beta?) = -i_ * d_(alpha,beta)*FD(l,M)
     +i_* l(alpha)*l(beta)/M^2 * (FD(l,M) - FD(l,rtxi*M))
     ;
 
+* charge of electron e = 1 here
 id EPH(m1?,mu1?) = i_ * g_(m1,mu1);
+
+id EPHNew(m1?,mu1?) = i_ * g_(m1,mu1)*(LambdaVren - LambdaAren*g_(m1,5_));
 
   
 #endprocedure
