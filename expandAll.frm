@@ -8,6 +8,7 @@ L M`diag'hard = mag`diag';
 .sort
 S z1, zi;
 
+.sort
 repeat;
   id FD(v1?,m?) = fNoL(v1-l,m);
 endrepeat;
@@ -18,22 +19,21 @@ inexpression M`diag'soft;
   #call newExpand(fNoL(0\,M*rtxi), -1/xi/M^2,l.l )
   if (count(M,1)<-8) discard;
 endinexpression;
+.sort
 
 inexpression M`diag'hard;
   #call newExpand(fNoL(q-k1\,m),1/[l^2],(2*l.q - 2*l.k1 - 2*q.k1))
+  if (count(M,1,l,1,[l^2],2)<-6) discard;
+  #call newExpand(fNoL(q-k1-k2\,m),1/[l^2],(2*l.q - 2*l.k1 -2*l.k2 - 2*q.k1 - 2*q.k2 + 2*k1.k2))
+*  #call newExpand(fNoL(k3-q\,m),1/[l^2], (2*l.k3 - 2*l.q - 2*q.k3))
+  if (count(M,1,l,1,[l^2],2)<-6) discard;
   #call newExpand(fNoL(q\,m), 1/[l^2], (2*l.q))
   #do i = 1,3
     #call newExpand(fNoL(q`i'\,m), 1/[l^2], (2*l.q`i'+q`i'.q`i'-m^2))
   #enddo
-  if (count(M,1,l,1,[l^2],2)<-8) discard;
+  if (count(M,1,l,1,[l^2],2)<-6) discard;
 endinexpression;
-.sort
 
-
-
-#call createFD0(l)
-#call scalarProdNoX
-ModuleOption local $vec;
 .sort
 #if (`diag'=="D")
 *   id q2 = q-k1; alternatively, q2 = q3-k1;
@@ -53,6 +53,19 @@ ModuleOption local $vec;
   endargument;
 #endif
 .sort
+
+#call preReduction
+print +s;
+.sort
+#call createFD0(l)
+#call scalarProdNoX
+ModuleOption local $vec;
+.sort
+#call threePoint(l,[l^2])
+.sort
+#call createFD0(l)
+#call scalarProdNoX
+ModuleOption local $vec;
 
 #call twoPoint(l,[l^2],{k1\,k2\,k3})
 #call scalarProdNoX
@@ -98,9 +111,13 @@ if (count(ep,1)>1) discard;
 *B A0, F1,F2,F3,F4;
 *print +s;
 .sort
-id A0(a?) = a/ep - a*(1-ln_(a));
-id B0(0,a?,a?) = 1/ep - ln_(a);
+S [1-D],[2-D];
+
+#call evaluatePaVe
 *id B0(0,a?,a?) = 1/ep - ln_(a);
+id 1/[1-D] = -1/3 - 2*ep/9 - 4*ep^2/27;
+id 1/[2-D] = -1/2 *(1+ep+ep^2);
+id D = 4-2*ep;
 if (count(ep,1)>0) discard;
 if (count(M,1)<-4) discard;
 .sort
@@ -122,7 +139,7 @@ print +s;
 Drop;
 L M`diag'tot = M`diag'soft + M`diag'hard;
 
-B ep;
+B ep, C0i, C0;
 print +s;
 .sort
 *#call toFormFactors(MEtot, MagEtot);

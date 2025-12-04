@@ -9,7 +9,6 @@
 *V v1,v2;
 *CF FD, fNoL;
 
-
 if ((match(fNoL(v1?$vec,m?))) && (match(fNoL(0,m?))==0));
 *shifting all loop momenta
   multiply replace_(`p',`p'-$vec);

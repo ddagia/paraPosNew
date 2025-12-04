@@ -14,6 +14,7 @@ if (count(FD,1)>0) goto notallowed;
 if (count(fNoL,1)>2) goto notallowed;
 
 id fNoL(v1?,m?)*fNoL(0,m?) = Binternal(v1,m,m);
+id fNoL(0,m?)*fNoL(v1?,m?) = Binternal(v1,m,m);
 id fNoL(0,m?)*fNoL(0,m?) = Binternal(0,m,m);
 
 id `p'.`p'^a? = `psq'^a;

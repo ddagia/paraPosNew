@@ -1,3 +1,4 @@
+Off statistics;
 S D, [D-4], m,M, ax, vec, [sqrt2];
 Dimension D:[D-4];
 Unittrace D;
