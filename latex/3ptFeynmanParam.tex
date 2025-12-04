@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\usepackage[letterpaper, margin=1in, headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb}
+\setlength{\parindent}{4pt}
+
+\newcommand{\diedie}[2]{\frac{\partial #1}{\partial #2}}
+\let\die\partial
+\newcommand{\christoffel}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\Q}{{\vphantom{-1}}}
+
+\begin{document}
+
+We begin with a 3 point rank-2 integral
+
+\begin{equation}
+	\int_l \frac{l^{\mu 1}\; l^{\mu 2}}{[l^2 -m^2][(l+k_1)^2 -m^2][(l+k_2)^2 -m^2]}
+\end{equation}
+Performing Feynman parametrization
+\begin{equation}
+	 \int_0^1 dx dy \int_l \frac{l^{\mu 1}l^{\mu 2}}{[l^2+2l.k_1 x + 2l.k_2 y - m^2]^3}
+\end{equation}
+Adding $k_1.k_1x^2=0$ , $k_2.k_2y^2=0$ and $k_1.k_2 xy - k_1.k_2 xy = 0$ we have:
+\begin{align}
+	&= \int_0^1 dx dy \int_l \frac{l^{\mu 1}l^{\mu 2}}{[(l+k_1 x+k_2 y)^2 -k_1.k_2 xy - m^2]^3}\\
+	&= \int_0^1 dx dy \int_l \frac{(l-2k_1x-2k_2y)^{\mu 1}(l-2k_1x-2k_2y)^{\mu 2}}{[l^2- 2k_1.k_2xy -m^2]^3}
+\end{align}
+
+\end{document}

@@ -1,0 +1,1 @@
+L MB = PsiP*EPH(1,mu3)*Eprop(1,q-k1-k2)*EZ(1,beta)*Eprop(1,l+q-k1-k2)*EPH(1,mu2)*Eprop(1,l+q-k1)*EPH(1,mu1)*Eprop(1,l+q)*EZ(1,alpha)*Zprop(l,alpha,beta);

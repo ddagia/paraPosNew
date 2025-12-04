@@ -10,6 +10,9 @@ Set cycOneMinX2: [1-x3],[1-x1],[1-x2];
 
 #do i = 1,`cnt'
   id x1/[1-2*x1] = -1/2*([1-2*x1]-1)/[1-2*x1];
+  id x3/[1-2*x3] = -1/2*([1-2*x3]-1)/[1-2*x3];
+  id [1-2*x3] = 1 - 2*x3;
+  id [1-2*x1] = 1 - 2*x1;
   id x?xset[n] /y?cycOneMinX[n] /z?cycOneMinX2[n] = (y + z)/y/z;
   id x?oneMinX?xset = x;
 
